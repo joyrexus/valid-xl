@@ -28,17 +28,15 @@ Using the following sample file (`sample.xlsx`) ...
 
 Output ...
 
-```javascript
-4 invalid values in `sample.xlsx:Transcript`
+    4 invalid values in `sample.xlsx:Transcript`
 
-LINE 4:
-	LRB = `L+ ` is an invalid value
-LINE 5:
-	XYZ = `q` is an invalid value
-LINE 6:
-	LRB = `L+R+X` is an invalid value
-	XYZ = `b` is an invalid value
-```
+    LINE 4:
+      LRB = `L+ ` is an invalid value
+    LINE 5:
+      XYZ = `q` is an invalid value
+    LINE 6:
+      LRB = `L+R+X` is an invalid value
+      XYZ = `b` is an invalid value
 
 
 #### Module
