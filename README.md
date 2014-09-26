@@ -28,15 +28,17 @@ Using the following sample file (`sample.xlsx`) ...
 
 Output ...
 
-    4 invalid values in `sample.xlsx:Transcript`
+```javascript
+4 invalid values in `sample.xlsx:Transcript`
 
-    ROW 21:
-      LRB = `L+ ` is an invalid value
-    ROW 31:
-      XYZ = `q` is an invalid value
-    ROW 41:
-      LRB = `L+R+X` is an invalid value
-      XYZ = `b` is an invalid value
+LINE 4:
+	LRB = `L+ ` is an invalid value
+LINE 5:
+	XYZ = `q` is an invalid value
+LINE 6:
+	LRB = `L+R+X` is an invalid value
+	XYZ = `b` is an invalid value
+```
 
 
 #### Module
@@ -48,7 +50,7 @@ var file = 'sample.xlsx',
     sheet = 'Transcript',
     columns = ['LRB', 'XYZ'];
 
-var report = validate(file, sheet, columns);
+var report = validate(file, sheet, columns).report;
 
 console.log(report);
 ```
@@ -56,19 +58,15 @@ console.log(report);
 Output ...
 
 ```javascript
-{ file: 'sample.xlsx',
-  rows: 
-   [ { _ID: '22', ROW: '1', LRB: 'L', XYZ: 'x' },
-     { _ID: '22', ROW: '2', LRB: 'L+L', XYZ: 'y' },
-     { _ID: '22', ROW: '3', LRB: 'L+ ', XYZ: 'z' },
-     { _ID: '22', ROW: '4', LRB: 'L+R+B', XYZ: 'q' },
-     { _ID: '22', ROW: '5', LRB: 'L+R+X', XYZ: 'b' } ],
-  report: 
-   { errors: 4,
-     file: 'sample.xlsx',
-     sheet: 'Transcript',
-     invalid: { '2': [Object], '3': [Object], '4': [Object] } } }
-
+{ errors: 4,
+  file: 'sample.xlsx',
+  sheet: 'Transcript',
+  invalid: 
+   { '2': [ 'LRB = `L+ ` is an invalid value' ],
+     '3': [ 'XYZ = `q` is an invalid value' ],
+     '4': 
+      [ 'LRB = `L+R+X` is an invalid value',
+        'XYZ = `b` is an invalid value' ] } }
 ```
 
 
