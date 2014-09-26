@@ -1,0 +1,56 @@
+#!/usr/bin/env node
+var parseArgs = require('minimist');
+var validate = require(__dirname + '/../index');
+
+var options = {
+    "default": {
+        sheet: 'Transcript'
+    },
+    alias: {
+        s: 'sheet'
+    }
+};
+
+var argv = parseArgs(process.argv.slice(2), options);
+var file = argv._[0];
+var columns = argv.columns != null ? argv.columns.split(',') : void 0;
+
+var usage = function() {
+    use = 'validate --sheet=SHEETNAME --columns=COLUMN1,COLUMN2 FILE.xlsx';
+    console.log(use);
+};
+
+var run = function() {
+    if (argv.help) {
+        usage();
+        return '';
+    }
+    if (!argv.sheet) {
+        console.log('please specify a sheet to validate ...\n');
+        usage();
+        return '';
+    }
+    if (!columns) {
+        console.log('please specify columns to validate ...\n');
+        usage();
+        return '';
+    }
+    validate(file, argv.sheet, columns).printReport();
+    /*
+    report = validate(file, argv.sheet, columns);
+    console.log(report.errors 
+                    + " invalid values in `" 
+                    + report.file + ":" + report.sheet + "`\n");
+
+    for (row in report.invalid) {
+        invalid = report.invalid[row];
+        row += 1;
+        console.log("ROW " + row + ":");
+        for (var i = 0; i < invalid.length; i++) {
+            console.log("\t" + invalid[i]);
+        }
+    }
+    */
+};
+
+run();
