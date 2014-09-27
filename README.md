@@ -2,10 +2,11 @@
 
 A simple module and CLI for validation reporting on specified columns within an excel worksheet.
 
+For the CLI, you pass in a file containing your column constraint functions:
+
     validate --sheet=SheetName                      \
              --constraints=your.column.constraints.js file.xlsx
 
-For the CLI, you pass in a file containing your column constraint functions.
 
 ## Usage
 
