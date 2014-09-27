@@ -2,10 +2,10 @@
 
 A simple module and CLI for validation reporting on specified columns within an excel worksheet.
 
-    validate --sheet=SHEET --columns=COL1,COL2,COL3 FILE.xlsx
+    validate --sheet=SheetName                      \
+             --constraints=your.column.constraints.js file.xlsx
 
-You'll need to put the validation logic for any columns you want to check in `lib/valid.js`.
-
+For the CLI, you pass in a file containing your column constraint functions.
 
 ## Usage
 
@@ -24,7 +24,8 @@ Using the following sample file (`sample.xlsx`) ...
 
 #### CLI
 
-    validate --sheet=Transcript --columns=LRB,XYZ sample.xlsx
+    validate --sheet=Transcript \
+             --constraints=sample.constraints.js sample.xlsx
 
 Output ...
 
@@ -41,19 +42,21 @@ Output ...
 
 #### Module
 
+You'll typically require a file containing a constraints object:
+
 ```javascript
 var validate = require('valid-xlsx');
+var constraints = require('sample.constraints');
 
 var file = 'sample.xlsx',
-    sheet = 'Transcript',
-    columns = ['LRB', 'XYZ'];
+    sheet = 'Transcript'
 
-var report = validate(file, sheet, columns).report;
+var results = validate(file, sheet, constraints).report;
 
-console.log(report);
+console.log(results);
 ```
 
-Output ...
+This should yield the following results:
 
 ```javascript
 { errors: 4,
@@ -67,22 +70,40 @@ Output ...
         'XYZ = `b` is an invalid value' ] } }
 ```
 
+The constraints object should contain functions to check the validity of column
+values.  The key of each constraint function should reflect the name of the column values it validates.
 
-## Validation
-
-You'll need to put the validation logic for any columns you want to check in `lib/valid.js`.
-
-For example, here's how you could check whether an `XYZ` column only contains an `x`, `y`, or `z`:
+In the example below, we define the constraints object inline.  It contains one
+column constraint function, viz., a simple constraint on valid values for the `XYZ`
+column:
 
 ```javascript
-module.exports.XYZ = function(v) {
-    column = 'XYZ';
-    if (v) {
-        if (!/^[xyz]$/.test(v)) {
-            return invalidReply(column, v, 'is an invalid value')
+var validate = require('valid-xlsx');
+
+var file = 'sample.xlsx',
+    sheet = 'Transcript',
+    constraints = {
+        XYZ: function(v) {
+            if (v) {
+                if (!/^[xyz]$/.test(v)) {
+                    return v + ' is not a valid value!';
+                }
+            }
         }
-    }
-};
+    };
+
+var results = validate(file, sheet, constraints).report;
+
+console.log(results);
 ```
 
-Note that the parser assumes that the first line of each worksheet is a header line containing column names.  Each validation function should have the same name as the column being validated.
+This produces the following results:
+
+```javascript
+{ errors: 2,
+  file: 'sample.xlsx',
+  sheet: 'Transcript',
+  invalid: 
+   { '3': [ 'q is not a valid value!' ],
+     '4': [ 'b is not a valid value!' ] } }
+```

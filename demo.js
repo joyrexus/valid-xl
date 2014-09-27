@@ -2,8 +2,26 @@ var validate = require('./');
 
 var file = 'sample.xlsx',
     sheet = 'Transcript',
-    columns = ['LRB', 'XYZ'];
+    constraints = {
+        XYZ: function(v) {
+            if (v) {
+                if (!/^[xyz]$/.test(v)) {
+                    return 'XYZ: ' + v + ' is not a valid value!';
+                }
+            }
+        }
+    };
 
-var report = validate(file, sheet, columns).report;
+var results = validate(file, sheet, constraints)
+var invalid = results.report.invalid;
 
-console.log(report);
+for (var i in invalid) {
+    if (invalid.hasOwnProperty(i)) {
+        console.log(results.rows[i]);
+        console.log(invalid[i]);
+        console.log('');
+    }
+};
+
+
+

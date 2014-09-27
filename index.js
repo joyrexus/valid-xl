@@ -1,7 +1,6 @@
-var Parser = require('./lib/parse');
+var Validator = require('./lib/valid');
 
-module.exports = function(filename, sheetname, columns) {
-    var sheet = new Parser(filename, sheetname);
-    var report = sheet.validate(columns);
-    return report;
+module.exports = function(filename, sheetname, constraints) {
+    var sheet = new Validator(filename, sheetname, constraints);
+    return sheet.validate();
 };
