@@ -52,9 +52,9 @@ var constraints = require('sample.constraints');
 var file = 'sample.xlsx',
     sheet = 'Transcript'
 
-var results = validate(file, sheet, constraints).report;
+var results = validate(file, sheet, constraints);
 
-console.log(results);
+console.log(results.report);
 ```
 
 This should yield the following results:
