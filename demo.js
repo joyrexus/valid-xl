@@ -6,7 +6,7 @@ var file = 'sample.xlsx',
         XYZ: function(v) {
             if (v) {
                 if (!/^[xyz]$/.test(v)) {
-                    return 'XYZ: ' + v + ' is not a valid value!';
+                    return { XYZ: v + ' is not a valid value!' };
                 }
             }
         }

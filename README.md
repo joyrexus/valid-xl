@@ -86,24 +86,28 @@ var file = 'sample.xlsx',
         XYZ: function(v) {
             if (v) {
                 if (!/^[xyz]$/.test(v)) {
-                    return v + ' is not a valid value!';
+                    return { XYZ: v + ' is not a valid value!' };
                 }
             }
         }
     };
 
-var results = validate(file, sheet, constraints).report;
-
-console.log(results);
+var results = validate(file, sheet, constraints);
+console.log(results.report);
 ```
 
 This produces the following results:
 
 ```javascript
-{ errors: 2,
-  file: 'sample.xlsx',
-  sheet: 'Transcript',
-  invalid: 
-   { '3': [ 'q is not a valid value!' ],
-     '4': [ 'b is not a valid value!' ] } }
+{
+  errors: 2,
+  file: "sample.xlsx",
+  sheet: "Transcript",
+  invalid: {
+    '3': [ { XYZ: "q is not a valid value!" } ],
+    '4': [ { XYZ: "b is not a valid value!" } ]
+  }
+}
 ```
+
+See [`demo.js`](demo.js) for a slight elaboration of this example.
