@@ -100,8 +100,6 @@ This produces the following results:
 ```javascript
 {
   errors: 2,
-  file: "sample.xlsx",
-  sheet: "Transcript",
   invalid: {
     '3': [ { XYZ: "q is not a valid value!" } ],
     '4': [ { XYZ: "b is not a valid value!" } ]
