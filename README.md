@@ -30,13 +30,13 @@ Using the following sample file (`sample.xlsx`) ...
 
 Output ...
 
-    4 invalid values in `sample.xlsx:Transcript`
+    4 invalid values
 
-    LINE 4:
+    REC 2:
       LRB = `L+ ` is an invalid value
-    LINE 5:
+    REC 3:
       XYZ = `q` is an invalid value
-    LINE 6:
+    REC 4:
       LRB = `L+R+X` is an invalid value
       XYZ = `b` is an invalid value
 
@@ -61,8 +61,6 @@ This should yield the following results:
 
 ```javascript
 { errors: 4,
-  file: 'sample.xlsx',
-  sheet: 'Transcript',
   invalid: 
    { '2': [ 'LRB = `L+ ` is an invalid value' ],
      '3': [ 'XYZ = `q` is an invalid value' ],

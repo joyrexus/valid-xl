@@ -12,16 +12,16 @@ var file = 'sample.xlsx',
         }
     };
 
-var results = validate(file, sheet, constraints)
-var invalid = results.report.invalid;
+var results = validate(file, sheet, constraints);
+// results.printReport();
+// console.log(JSON.stringify(results.report, null, 2));
 
-for (var i in invalid) {
-    if (invalid.hasOwnProperty(i)) {
-        console.log(results.rows[i]);
-        console.log(invalid[i]);
+var errors = results.report.errors;
+
+for (var i in errors) {
+    if (errors.hasOwnProperty(i)) {
+        console.log(results.records[i]);
+        console.log(errors[i]);
         console.log('');
     }
 };
-
-
-
