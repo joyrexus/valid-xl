@@ -7,11 +7,9 @@
     "validate": "./bin/validate"
   },
   "dependencies": {
-    "j": "~0.3.14",
     "minimist": "~1.1.0",
-    "xlsx-rows": "~1.0.0"
+    "parse-xlsx": "0.0.2"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "node test.js",
     "demo": "node demo.js",
