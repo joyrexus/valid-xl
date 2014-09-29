@@ -4,7 +4,7 @@
   "description": "validate columns in an xlsx worksheet",
   "main": "index.js",
   "bin": {
-    "validate": "./bin/validate"
+    "validate-xlsx": "./bin/validate-xlsx.js"
   },
   "dependencies": {
     "minimist": "~1.1.0",
@@ -13,7 +13,7 @@
   "scripts": {
     "test": "node test.js",
     "demo": "node demo.js",
-    "cli-demo": "bin/validate --sheet=Transcript --constraints=sample.constraints.js sample.xlsx"
+    "cli-demo": "bin/validate-xlsx.js --sheet=Transcript --constraints=sample.constraints.js sample.xlsx"
   },
   "repository": {
     "type": "git",
@@ -24,7 +24,7 @@
     "parse",
     "validate"
   ],
-  "author": "J. Voigt",
+  "author": "joyrexus",
   "license": "BSD-2-Clause",
   "bugs": {
     "url": "https://github.com/joyrexus/valid-xlsx/issues"

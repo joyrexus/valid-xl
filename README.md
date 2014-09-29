@@ -4,8 +4,8 @@ A simple module and CLI for validation reporting on specified columns within an 
 
 For the CLI, you pass in a file containing your column constraint functions:
 
-    validate --sheet=SheetName                      \
-             --constraints=your.column.constraints.js file.xlsx
+    validate-xlsx --sheet=SheetName                      \
+                  --constraints=your.column.constraints.js file.xlsx
 
 
 ## Usage
@@ -25,8 +25,8 @@ Using the following sample file (`sample.xlsx`) ...
 
 #### CLI
 
-    validate --sheet=Transcript \
-             --constraints=sample.constraints.js sample.xlsx
+    validate-xlsx --sheet=Transcript \
+                  --constraints=sample.constraints.js sample.xlsx
 
 Output ...
 
