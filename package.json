@@ -1,6 +1,6 @@
 {
   "name": "valid-xlsx",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "validate columns in an xlsx worksheet",
   "main": "index.js",
   "bin": {

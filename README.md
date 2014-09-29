@@ -108,3 +108,11 @@ This produces the following results:
 ```
 
 See [`demo.js`](demo.js) for a slight elaboration of this example.
+
+
+## See Also
+
+* [`parse-xlsx`](https://github.com/joyrexus/parse-xlsx) - parse excel worksheets 
+  with column headers
+* [`valid-records`](https://github.com/joyrexus/valid-records) - validate
+  specified fields within a set of records (ndjson)
