@@ -43,14 +43,20 @@ Output ...
 
 #### Module
 
-You'll typically require a file containing a constraints object:
+The module consists of a single validation function that takes three arguments:
+
+* path to an excel file (`sample.xlsx`)
+* the name of the worksheet to be validated (**Transcript**)
+* path to your column validation constraints (`sample.constraints.js`)
+
+The worksheet to be validated should contain tabular data and column headers in the first line.  
 
 ```javascript
 var validate = require('valid-xlsx');
-var constraints = require('sample.constraints');
 
 var file = 'sample.xlsx',
-    sheet = 'Transcript'
+    sheet = 'Transcript',
+    constraints = 'sample.constraints.js';
 
 var results = validate(file, sheet, constraints);
 
@@ -69,8 +75,7 @@ This should yield the following results:
         'XYZ = `b` is an invalid value' ] } }
 ```
 
-The constraints object should contain functions to check the validity of column
-values.  The key of each constraint function should reflect the name of the column values it validates.
+The constraints file only needs to contain a constraints object with functions to check the validity of column values.  The key of each constraint function should reflect the name of the column values it validates.  See [`sample.constraints.js`](sample.constraints.js) for an example.
 
 In the example below, we define the constraints object inline.  It contains one
 column constraint function, viz., a simple constraint on valid values for the `XYZ`
