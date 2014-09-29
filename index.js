@@ -1,5 +1,5 @@
 var Parser = require('parse-xlsx');
-var Validator = require('./lib/valid');
+var Validator = require('valid-records');
 
 module.exports = function(filename, sheetname, constraints) {
 
