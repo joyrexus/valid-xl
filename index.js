@@ -7,4 +7,4 @@ module.exports = function(filename, sheetname, constraints) {
     var valid = new Validator(constraints);
     var results = valid.validate(sheet.records);
     return results;
-}
+};

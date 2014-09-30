@@ -10,7 +10,7 @@ var file = 'sample.xlsx',
                 }
             }
         }
-    }
+    };
 
 var results = validate(file, sheet, constraints);
 // results.printReport();
