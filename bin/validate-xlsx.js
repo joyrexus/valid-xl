@@ -11,17 +11,20 @@ var options = {
         s: 'sheet',
         c: 'constraints'
     }
-};
+}
 
 var argv = parseArgs(process.argv.slice(2), options);
 var file = argv._[0];
 
 var usage = function() {
+
     var use = 'validate --sheet=sheetname --constraints=constraints.js file.xlsx';
     console.log(use);
-};
+}
+
 
 var run = function() {
+
     if (argv.help) {
         usage();
         return;
@@ -38,6 +41,6 @@ var run = function() {
     }
     var constraints = require(argv.constraints)
     validate(file, argv.sheet, constraints).printReport();
-};
+}
 
 run();
