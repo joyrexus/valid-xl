@@ -52,6 +52,6 @@ test('the core module', function (t) {
     var file = 'sample.xlsx', 
         sheet = 'Transcript';
     report = validate(file, sheet, check).report;
-    t.equal(report.invalid, 4, "total invalid");
+    t.equal(report.invalid, 4, "4 total invalid");
     t.equal(Object.keys(report.errors).length, 3, "3 lines have errors");
 });
