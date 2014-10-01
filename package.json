@@ -1,27 +1,28 @@
 {
-  "name": "valid-xlsx",
-  "version": "0.0.5",
-  "description": "validate columns in an xlsx worksheet",
+  "name": "valid-xl",
+  "version": "0.0.1",
+  "description": "validate and sanity-check columns in an excel worksheet",
   "main": "index.js",
   "bin": {
-    "validate-xlsx": "./bin/validate-xlsx.js"
+    "valid-xl": "./bin/valid-xl.js"
   },
   "dependencies": {
     "minimist": "~1.1.0",
-    "parse-xlsx": "0.0.6",
     "valid-records": "0.0.2",
-    "tape": "~3.0.0"
+    "tape": "~3.0.0",
+    "parse-xl": "~1.0.0"
   },
   "scripts": {
     "test": "node test.js",
     "demo": "node demo.js",
-    "cli-demo": "bin/validate-xlsx.js --sheet=Transcript --constraints=sample.constraints.js sample.xlsx"
+    "cli-demo": "bin/valid-xl.js --sheet=Transcript --constraints=sample.constraints.js sample.xlsx"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/joyrexus/valid-xlsx.git"
+    "url": "git://github.com/joyrexus/valid-xl.git"
   },
   "keywords": [
+    "xls",
     "xlsx",
     "parse",
     "validate"
@@ -29,6 +30,6 @@
   "author": "joyrexus",
   "license": "BSD-2-Clause",
   "bugs": {
-    "url": "https://github.com/joyrexus/valid-xlsx/issues"
+    "url": "https://github.com/joyrexus/valid-xl/issues"
   }
 }

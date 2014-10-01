@@ -1,16 +1,16 @@
-# valid-xlsx
+# valid-xl
 
 A simple module and CLI for validation reporting on specified columns within an excel worksheet.
 
 For the CLI, you pass in a file containing your column constraint functions:
 
-    validate-xlsx --sheet=SheetName                      \
-                  --constraints=your.column.constraints.js file.xlsx
+    valid-xl --sheet=SheetName \
+             --constraints=your.column.constraints.js file.xlsx
 
 
 ## Usage
 
-    npm install -g valid-xlsx
+    npm install -g valid-xl
     npm run test
     npm run demo
     npm run cli-demo
@@ -25,8 +25,8 @@ Using the following sample file (`sample.xlsx`) ...
 
 #### CLI
 
-    validate-xlsx --sheet=Transcript \
-                  --constraints=sample.constraints.js sample.xlsx
+    valid-xl --sheet=Transcript \
+             --constraints=sample.constraints.js sample.xlsx
 
 Output ...
 
@@ -52,7 +52,7 @@ The module consists of a single validation function that takes three arguments:
 The worksheet to be validated should contain tabular data and column headers in the first line.  
 
 ```javascript
-var validate = require('valid-xlsx');
+var validate = require('valid-xl');
 
 var file = 'sample.xlsx',
     sheet = 'Transcript',
@@ -82,7 +82,7 @@ column constraint function, viz., a simple constraint on valid values for the `X
 column:
 
 ```javascript
-var validate = require('valid-xlsx');
+var validate = require('valid-xl');
 
 var file = 'sample.xlsx',
     sheet = 'Transcript',
@@ -117,7 +117,8 @@ See [`demo.js`](demo.js) for a slight elaboration of this example.
 
 ## See Also
 
-* [`parse-xlsx`](https://github.com/joyrexus/parse-xlsx) - parse excel worksheets 
+* [`parse-xl`](https://github.com/joyrexus/parse-xl) - parse excel worksheets 
   with column headers
 * [`valid-records`](https://github.com/joyrexus/valid-records) - validate
-  specified fields within a set of records (ndjson)
+  specified fields within a set of records (an array or js-objects or stream
+  of ndjson)

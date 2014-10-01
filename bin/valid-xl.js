@@ -1,6 +1,8 @@
 #!/usr/bin/env node
+'use strict';
+
 var parseArgs = require('minimist');
-var validate = require(__dirname + '/../index');
+var validate = require('../');
 
 var options = {
     "default": {
@@ -16,14 +18,14 @@ var options = {
 var argv = parseArgs(process.argv.slice(2), options);
 var file = argv._[0];
 
-var usage = function() {
+var usage = function () {
 
-    var use = 'validate --sheet=sheetname --constraints=constraints.js file.xlsx';
+    var use = 'valid-xl --sheet=sheetname --constraints=constraints.js file.xlsx';
     console.log(use);
 };
 
 
-var run = function() {
+var run = function () {
 
     if (argv.help) {
         usage();
