@@ -3,7 +3,7 @@ var validate = require('./');
 
 var file = 'sample.xlsx',
     sheet = 'Transcript',
-    constraints = {
+    schema = {
         XYZ: function (v) {
             if (v) {
                 if (!/^[xyz]$/.test(v)) {
@@ -13,7 +13,7 @@ var file = 'sample.xlsx',
         }
     };
 
-var results = validate(file, sheet, constraints);
+var results = validate(file, sheet, schema);
 // results.printReport();
 // console.log(JSON.stringify(results.report, null, 2));
 

@@ -1,9 +1,9 @@
 'use strict';
 var test = require('tape');
-var check = require('sample.constraints');
+var check = require('sample.schema');
 
 
-test('column constraints', function (t) {
+test('schema', function (t) {
 
     test('LRB column constraints', function (t) {
 
@@ -51,7 +51,7 @@ test('column constraints', function (t) {
 });
 
 
-test('core module', function (t) {
+test('module', function (t) {
 
     var validate = require('./'),
         file = 'sample.xlsx',

@@ -2,10 +2,10 @@
 
 A simple module and CLI for validation reporting on specified columns within an excel worksheet.
 
-For the CLI, you pass in a file containing your column constraint functions:
+For the CLI, you pass in a **schema** file containing your column constraint functions:
 
     valid-xl --sheet=SheetName \
-             --constraints=your.column.constraints.js file.xlsx
+             --schema=your.column.constraints.js file.xlsx
 
 
 ## Usage
@@ -26,7 +26,7 @@ Using the following sample file (`sample.xlsx`) ...
 #### CLI
 
     valid-xl --sheet=Transcript \
-             --constraints=sample.constraints.js sample.xlsx
+             --schema=sample.schema.js sample.xlsx
 
 Output ...
 
@@ -47,7 +47,7 @@ The module consists of a single validation function that takes three arguments:
 
 * path to an excel file (`sample.xlsx`)
 * the name of the worksheet to be validated (**Transcript**)
-* path to your column validation constraints (`sample.constraints.js`)
+* path to your column validation constraints (`sample.schema.js`)
 
 The worksheet to be validated should contain tabular data and column headers in the first line.  
 
@@ -56,9 +56,9 @@ var validate = require('valid-xl');
 
 var file = 'sample.xlsx',
     sheet = 'Transcript',
-    constraints = 'sample.constraints.js';
+    schema = 'sample.schema.js';
 
-var results = validate(file, sheet, constraints);
+var results = validate(file, sheet, schema);
 
 console.log(results.report);
 ```
@@ -75,10 +75,10 @@ This should yield the following results:
         'XYZ = `b` is an invalid value' ] } }
 ```
 
-The constraints file only needs to contain a constraints object with functions to check the validity of column values.  The key of each constraint function should reflect the name of the column values it validates.  See [`sample.constraints.js`](sample.constraints.js) for an example.
+The schema file only needs to contain a constraints object with functions to check the validity of particular column values.  The keys should reflect the name of the columns to be validated. See [`sample.schema.js`](sample.schema.js) for an example.
 
-In the example below, we define the constraints object inline.  It contains one
-column constraint function, viz., a simple constraint on valid values for the `XYZ`
+In the example below, we define the schema inline.  It contains one
+column rule, viz., a simple constraint on valid values for the `XYZ`
 column:
 
 ```javascript
@@ -86,7 +86,7 @@ var validate = require('valid-xl');
 
 var file = 'sample.xlsx',
     sheet = 'Transcript',
-    constraints = {
+    schema = {
         XYZ: function(v) {
             if (v) {
                 if (!/^[xyz]$/.test(v)) {
@@ -96,7 +96,7 @@ var file = 'sample.xlsx',
         }
     };
 
-var results = validate(file, sheet, constraints);
+var results = validate(file, sheet, schema);
 console.log(results.report);
 ```
 
@@ -120,5 +120,4 @@ See [`demo.js`](demo.js) for a slight elaboration of this example.
 * [`parse-xl`](https://github.com/joyrexus/parse-xl) - parse excel worksheets 
   with column headers
 * [`valid-records`](https://github.com/joyrexus/valid-records) - validate
-  specified fields within a set of records (an array or js-objects or stream
-  of ndjson)
+  specified fields within a set of records (an array or js-objects or ndjson stream)

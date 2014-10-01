@@ -7,11 +7,12 @@ var validate = require('../');
 var options = {
     "default": {
         sheet: 'Sheet1',
-        constraints: 'constraints.js'
+        schema: 'schema.js'
     },
     alias: {
         s: 'sheet',
-        c: 'constraints'
+        r: 'rules',
+        rules: 'schema'
     }
 };
 
@@ -20,7 +21,7 @@ var file = argv._[0];
 
 var usage = function () {
 
-    var use = 'valid-xl --sheet=sheetname --constraints=constraints.js file.xlsx';
+    var use = 'valid-xl --sheet=sheetname --schema=schema.js file.xlsx';
     console.log(use);
 };
 
@@ -38,14 +39,14 @@ var run = function () {
         return;
     }
 
-    if (!argv.constraints) {
-        console.log('please specify your column constraints to validate ...\n');
+    if (!argv.schema) {
+        console.log('please specify your validation schema ...\n');
         usage();
         return;
     }
 
-    var constraints = require(argv.constraints);
-    validate(file, argv.sheet, constraints).printReport();
+    var schema = require(argv.schema);
+    validate(file, argv.sheet, schema).printReport();
 };
 
 run();
