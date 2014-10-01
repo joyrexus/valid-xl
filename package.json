@@ -1,6 +1,6 @@
 {
   "name": "valid-xl",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "validate and sanity-check columns in an excel worksheet",
   "main": "index.js",
   "bin": {
@@ -8,9 +8,9 @@
   },
   "dependencies": {
     "minimist": "~1.1.0",
-    "valid-records": "0.0.2",
     "tape": "~3.0.0",
-    "parse-xl": "~1.0.0"
+    "parse-xl": "~1.0.1",
+    "valid-records": "0.0.5"
   },
   "scripts": {
     "test": "node test.js",
