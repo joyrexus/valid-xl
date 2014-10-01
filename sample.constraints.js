@@ -1,7 +1,9 @@
-// helper function to format reply for invalid values
-invalidReply = function(col, val, reason) {
+'use strict';
 
-    value = '`' + val + '`';
+// helper function to format reply for invalid values
+var invalidReply = function (col, val, reason) {
+
+    var value = '`' + val + '`';
     return [col, '=', value, reason].join(' ');
 };
 
@@ -9,23 +11,23 @@ invalidReply = function(col, val, reason) {
 // column pattern constraints
 module.exports = {
 
-    LRB: function(v) {
+    LRB: function (v) {
 
-        column = 'LRB';
+        var column = 'LRB';
         if (v) {
             if (!/^[LRB](?:\+[LRB])*$/.test(v)) {
-                return invalidReply(column, v, 'is an invalid value')
+                return invalidReply(column, v, 'is an invalid value');
             }
         }
     },
 
 
-    XYZ: function(v) {
+    XYZ: function (v) {
 
-        column = 'XYZ';
+        var column = 'XYZ';
         if (v) {
             if (!/^[xyz]$/.test(v)) {
-                return invalidReply(column, v, 'is an invalid value')
+                return invalidReply(column, v, 'is an invalid value');
             }
         }
     }

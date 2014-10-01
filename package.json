@@ -1,6 +1,6 @@
 {
   "name": "valid-xl",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "validate and sanity-check columns in an excel worksheet",
   "main": "index.js",
   "bin": {
